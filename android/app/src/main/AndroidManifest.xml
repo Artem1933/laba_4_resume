@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="laba_4_resume"
+        android:label="My Resume"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
 

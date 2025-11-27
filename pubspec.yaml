@@ -1,5 +1,5 @@
 name: laba_4_resume
-description: "A Flutter project with persistence and ads."
+description: "A professional resume builder application created with Flutter."
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -17,16 +17,13 @@ dependencies:
   go_router: ^14.0.2
   http: ^1.2.1
   shared_preferences: ^2.2.3
-
   google_mobile_ads: ^5.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-
   mocktail: ^1.0.3
-
   flutter_launcher_icons: ^0.14.4
 
 flutter:
