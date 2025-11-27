@@ -1,56 +1,30 @@
+// This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility in the flutter_test package. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:provider/provider.dart';
 
-import 'package:laba_4_resume/ui/home/widgets/home_page.dart';
-import 'package:laba_4_resume/ui/home/view_models/home_view_model.dart';
-import 'package:laba_4_resume/ui/theme/theme_view_model.dart';
-import 'package:laba_4_resume/data/repositories/profile_repository.dart';
-import 'package:laba_4_resume/domain/models/profile_model.dart';
-import 'package:laba_4_resume/data/services/theme_service.dart';
-
-class MockProfileRepository extends Mock implements ProfileRepository {}
-class MockThemeService extends Mock implements ThemeService {}
+import 'package:laba_4_resume/main.dart';
 
 void main() {
-  group('HomePage Widget Tests', () {
-    late MockProfileRepository mockProfileRepo;
-    late MockThemeService mockThemeService;
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const MyApp());
 
-    setUp(() {
-      mockProfileRepo = MockProfileRepository();
-      mockThemeService = MockThemeService();
-      
-      when(() => mockThemeService.loadThemeMode()).thenAnswer((_) async => false);
-    });
+    // Verify that our counter starts at 0.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
 
-    testWidgets('Application starts and shows title', (WidgetTester tester) async {
-      when(() => mockProfileRepo.getAllProfiles())
-          .thenAnswer((_) async {
-            await Future.delayed(const Duration(milliseconds: 1)); 
-            return <ProfileModel>[]; 
-          });
+    // Tap the '+' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
 
-      await tester.pumpWidget(
-        MultiProvider(
-          providers: [
-            ChangeNotifierProvider(
-              create: (_) => HomeViewModel(mockProfileRepo),
-            ),
-            ChangeNotifierProvider(
-              create: (_) => ThemeViewModel(mockThemeService),
-            ),
-          ],
-          child: const MaterialApp(
-            home: HomePage(),
-          ),
-        ),
-      );
-
-      expect(find.text('Варіанти Резюме'), findsOneWidget);
-
-      await tester.pumpAndSettle();
-    });
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
   });
 }

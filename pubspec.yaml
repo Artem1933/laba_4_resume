@@ -19,32 +19,20 @@ dependencies:
   go_router: ^14.0.2
 
   shared_preferences: ^2.2.3
-  http: ^1.2.1
 
-  google_mobile_ads: ^5.1.0
+  http: ^1.2.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-  mocktail: ^1.0.3
-
-  flutter_launcher_icons: ^0.14.1
+  flutter_launcher_icons: ^0.14.4
 
 flutter:
   uses-material-design: true
 
-flutter_icons:
+flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/icon/icon.png"
   min_sdk_android: 21
-  web:
-    generate: true
-    image_path: "assets/icon/icon.png"
-    backgroundColor: "#ffffff"
-    themeColor: "#ffffff"
-  windows:
-    generate: true
-    image_path: "assets/icon/icon.png"
-    icon_size: 256
