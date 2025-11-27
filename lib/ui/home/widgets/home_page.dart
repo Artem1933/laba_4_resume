@@ -3,8 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../../../routing/routes.dart';
 import '../../../domain/models/profile_model.dart';
-import '../view_models/home_view_model.dart'; // ПЕРЕВІРТЕ ЦЕЙ ШЛЯХ
+import '../view_models/home_view_model.dart';
 import '../../theme/theme_view_model.dart';
+import '../../common/ad_banner_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -75,6 +76,10 @@ class HomePage extends StatelessWidget {
               onPressed: () => context.go(AppRoutes.github),
               child: const Text('Переглянути статистику GitHub'),
             ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 10.0),
+            child: AdBannerWidget(),
           ),
         ],
       ),
