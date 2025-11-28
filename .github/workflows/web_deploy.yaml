@@ -1,10 +1,8 @@
 name: Deploy Resume Web App to GitHub Pages
 
 on:
-
   push:
     branches: [ main ]
-
   workflow_dispatch:
 
 permissions:
@@ -17,7 +15,6 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -34,7 +31,7 @@ jobs:
         run: flutter pub get
 
       - name: Build web app
-        run: flutter build web --release --base-href "/laba_4_resume/"
+        run: flutter build web --release --base-href "/my_resume/"
 
       - name: Upload static files as artifact
         uses: actions/upload-pages-artifact@v3
